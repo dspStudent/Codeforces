@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 public class CoverInWater{
 	public static int f(String s){
 		String str[]=s.split("#");
