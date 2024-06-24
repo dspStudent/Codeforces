@@ -1,1 +1,22 @@
-16
+Deleted: D:\Codeforces\ComputingMachine.class
+Deleted: D:\Codeforces\CountNumberofNiceSubarrays.class
+Deleted: D:\Codeforces\CountSubmatricesWithAllOnes.class
+Deleted: D:\Codeforces\DecodeString.class
+Deleted: D:\Codeforces\DeleteClassFiles$1.class
+Deleted: D:\Codeforces\DeleteClassFiles.class
+Deleted: D:\Codeforces\IncreasingArray.class
+Deleted: D:\Codeforces\InfixToPostfix.class
+Deleted: D:\Codeforces\LeetCodeContestW403Q2.class
+Deleted: D:\Codeforces\LeetCodeContestW403Q3Aproach2.class
+Deleted: D:\Codeforces\LongestContinuousSubarrayWithAbsoluteDiffLessThanOrEqualToLimit.class
+Deleted: D:\Codeforces\LongestValidParentheses.class
+Deleted: D:\Codeforces\MinimumNumberOfKConsecutiveBitFlips.class
+Deleted: D:\Codeforces\MissingNumber.class
+Deleted: D:\Codeforces\Pattern132.class
+Deleted: D:\Codeforces\RemoveKDigits.class
+Deleted: D:\Codeforces\Repetitions.class
+Deleted: D:\Codeforces\ReverseStackRec.class
+Deleted: D:\Codeforces\Solution.class
+Deleted: D:\Codeforces\TwoPermutations.class
+Deleted: D:\Codeforces\Vinay.class
+Deleted: D:\Codeforces\WeirdAlgorithm.class
