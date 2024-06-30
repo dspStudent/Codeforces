@@ -1,6 +1,8 @@
+Deleted: D:\Codeforces\BitStringCses.class
 Deleted: D:\Codeforces\DeleteClassFiles$1.class
 Deleted: D:\Codeforces\DeleteClassFiles.class
-Deleted: D:\Codeforces\MaximumTotalImportanceOfRoads.class
-Deleted: D:\Codeforces\NumberSpiral.class
-Deleted: D:\Codeforces\PermutationsCsese.class
-Deleted: D:\Codeforces\ProductofThreeNumbers.class
+Deleted: D:\Codeforces\DisjointUnionSet.class
+Deleted: D:\Codeforces\FiboSumSoj.class
+Deleted: D:\Codeforces\RemoveMaxNumberOfEdgesToKeepGraphFullyTraversable.class
+Deleted: D:\Codeforces\TwoKnightsCses.class
+Deleted: D:\Codeforces\TwoSets.class
