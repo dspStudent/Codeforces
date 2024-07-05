@@ -32,3 +32,4 @@ public class ADoremysPaint3{
 		}
 	}
 }
+// C:\Users\dsp\AppData\Roaming\Sublime Text\Packages\User
