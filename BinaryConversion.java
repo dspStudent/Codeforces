@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class BinaryConversion {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -29,8 +29,31 @@ public class Vinay {
 
 
 
-    public int solve(){
-        return 0;
+    public void solve(char from[], char to[], int m){
+    	int n=from.length;
+    	int one=0, zero=0, def=0;
+    	for(int i=0;i<n;i++){
+    		if(from[i]!=to[i])def++;
+    		if(from[i]=='1')one++;
+    		else zero++;
+    	}
+    	int o=one, z=zero;
+    	for(int i=0;i<n;i++){
+    		if(to[i]=='1')one--;
+    		else zero--;
+    	}
+    	if(zero!=0 || one!=0){
+    		op.append("No").append("\n");
+    		return;
+    	}
+    	
+    	int swaps=def/2;
+    	if((swaps<=m && (o>=2 || z>=2)) || (swaps%2==m%2 && swaps<=m)){
+    		op.append("Yes").append("\n");
+    		return;
+    	}
+    	op.append("No").append("\n");
+        return ;
     }
 
     public int run(){
@@ -42,10 +65,18 @@ public class Vinay {
     }
 
 
+   // 1 1 1 1 0 1 0 0 1
+   // 0 0 0 1 1 1 1 1 1
 
+   // 1 2 3 4 5 7 8 9
+   // 1 1 1 1 0 0 0 0
 
+   // 1-5
+   // 2-7
+   // 3-8
+   // 4-9
 
-
+    //  
 
 
 
@@ -55,11 +86,14 @@ public class Vinay {
 
 
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
+        BinaryConversion o=new BinaryConversion();
         int t = sToInt(br.readLine());
         while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+        	st=nst(br.readLine());
+            int n=sToInt(st.nextToken()), m=sToInt(st.nextToken());
+            char from[]=br.readLine().toCharArray();
+            char to[]=br.readLine().toCharArray();
+            o.solve(from, to, m);
         }
         pw.println(op);
         pw.flush();

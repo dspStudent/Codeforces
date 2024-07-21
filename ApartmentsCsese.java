@@ -1,70 +1,42 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
-    public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+public class ApartmentsCsese {
+    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
-
-
-    public static StringBuilder op=new StringBuilder();
+    public static StringBuilder op = new StringBuilder();
 
     public static StringTokenizer st;
 
-    
-    public static int[] dr={-1 , 1, 0, 0};
-
-    public static int[] dc={0, 0, -1, 1};
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public int solve(){
-        return 0;
-    }
-
-    public int run(){
-        return 0;
-    }
-
-    public int f(){
-        return 0;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
-        int t = sToInt(br.readLine());
-        while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+    public int solve (List<Integer>a, List<Integer> b, int k) {
+        Collections.sort(a);
+        Collections.sort(b);
+        int i=0, j=0,  n=a.size(), m=b.size(), count=0;
+        while(i<n && j<m){
+            if(Math.abs(a.get(i)-b.get(j))<=k){
+                count++;i++;j++;
+            }
+            else if(a.get(i)>b.get(j)){
+                j++;
+            }
+            else{
+                i++;
+            }
         }
-        pw.println(op);
-        pw.flush();
-}
+        return count;
+    }
 
+    public static void main(String[] args) throws IOException {
+        ApartmentsCsese o = new ApartmentsCsese();
+        st = nst(br.readLine());
+        int nu = sToInt(st.nextToken()), na = sToInt(st.nextToken()), dif = sToInt(st.nextToken());
+        List<Integer>a=nextIntL(nu);
+        List<Integer>b = nextIntL(na);
+        op.append(o.solve(a, b, dif)).append("\n");
+        // System.out.println();
+        System.out.println(op);
+    }
 
 
 
@@ -84,57 +56,7 @@ public class Vinay {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- //<print2D>
+//<print2D>
 
     public static int getNode2D(int row, int col, int n, int m) {
         return (row) * (m) + col;
@@ -244,33 +166,6 @@ public class Vinay {
 
 
     //<BinarySearch>
-
-    public static int lowerBound(int[] a, int k, int i, int j) {
-        int n = a.length;
-        int start = i, end = j;
-        while (start < end) {
-            int mid = start + (end - start) / 2;
-            if (k <= a[mid]) {
-                end = mid;
-            } else start = mid + 1;
-        }
-        return end;
-    }
-
-
-
-    public static int upperBound(int[] a, int k, int i, int j) {
-        int n = a.length;
-        int start = i, end = j;
-        while (start < end) {
-            int mid = start + (end - start) / 2;
-            if (k >= a[mid]) {
-                start = mid + 1;
-            } else end = mid;
-        }
-        return end;
-    }
-
 
     // <Lower Bound>
 

@@ -1,6 +1,10 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class MissingCoinSum {
+	
+	// prefxSum+1 >= presentNum ==> all sum up until now is exist
+
+
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -18,19 +22,30 @@ public class Vinay {
 
 
 
+    // 1 2 2 2 4 6 7 
+
+    // 1 3 5 7 8 1          22
+
+    // 1 1 3 5 7 8
 
 
 
 
 
 
+    
 
-
-
-
-
-    public int solve(){
-        return 0;
+    public long solve(List<Long>a){
+    	Collections.sort(a);
+    	long look=1L;
+    	int n=a.size();
+    	for(int i=0;i<n;i++){
+    		if(look<a.get(i)){
+    			return look;
+    		}
+    		look+=a.get(i);
+    	}
+        return look;
     }
 
     public int run(){
@@ -54,16 +69,16 @@ public class Vinay {
 
 
 
+
+
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
-        int t = sToInt(br.readLine());
-        while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
-        }
+        MissingCoinSum o=new MissingCoinSum();
+        int n = sToInt(br.readLine());
+        List<Long>a=nextLongL(n);
+        op.append(o.solve(a)).append("\n");
         pw.println(op);
         pw.flush();
-}
+    }
 
 
 
@@ -134,7 +149,11 @@ public class Vinay {
 
 
 
- //<print2D>
+
+
+
+
+//<print2D>
 
     public static int getNode2D(int row, int col, int n, int m) {
         return (row) * (m) + col;
@@ -244,6 +263,7 @@ public class Vinay {
 
 
     //<BinarySearch>
+
 
     public static int lowerBound(int[] a, int k, int i, int j) {
         int n = a.length;

@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class MaximumSubarraySum {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -27,10 +27,21 @@ public class Vinay {
 
 
 
+    
 
-
-    public int solve(){
-        return 0;
+    public long solve(List<Integer>a){
+    	long sum=0, ans=Long.MIN_VALUE;
+    	for(int i=0;i<a.size();i++){
+    		int x=a.get(i);
+            sum+=x;
+            ans=Math.max(ans, sum);
+    		if(sum<0){
+    			sum=0;
+    		}
+    		
+    	}
+    	// ans=Math.max(ans, sum);
+        return ans;
     }
 
     public int run(){
@@ -54,16 +65,16 @@ public class Vinay {
 
 
 
+
+
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
-        int t = sToInt(br.readLine());
-        while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
-        }
+        MaximumSubarraySum o=new MaximumSubarraySum();
+        int n = sToInt(br.readLine());
+        List<Integer>a=nextIntL(n);
+        op.append(o.solve(a)).append("\n");
         pw.println(op);
         pw.flush();
-}
+    }
 
 
 
@@ -134,7 +145,11 @@ public class Vinay {
 
 
 
- //<print2D>
+
+
+
+
+//<print2D>
 
     public static int getNode2D(int row, int col, int n, int m) {
         return (row) * (m) + col;
@@ -244,6 +259,7 @@ public class Vinay {
 
 
     //<BinarySearch>
+
 
     public static int lowerBound(int[] a, int k, int i, int j) {
         int n = a.length;

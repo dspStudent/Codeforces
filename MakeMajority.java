@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class MakeMajority {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -29,8 +29,31 @@ public class Vinay {
 
 
 
-    public int solve(){
-        return 0;
+    public void solve(char a[]){
+    	int n=a.length, zero=0, one=0;
+    	for(int i=0;i<n;i++){
+    		if(a[i]=='0')zero++;
+    		else one++;
+    	}
+    	if(one>zero){
+    		op.append("Yes").append("\n");
+    		return;
+    	}
+    	List<Character>c=new ArrayList<>();
+    	c.add(a[0]);
+    	zero=0;one=0;
+    	if(a[0]=='0')zero++;
+    	else one++;
+    	
+    	for(int i=1;i<n;i++){
+    		int nn=c.size()-1;
+    		if(c.get(nn)=='0' && a[i]=='0')continue;
+    		if(a[i]=='0')zero++;
+    		else one++;
+    		c.add(a[i]);
+    	}
+
+        op.append(one>zero?"yes":"no").append("\n");
     }
 
     public int run(){
@@ -55,11 +78,12 @@ public class Vinay {
 
 
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
+        MakeMajority o=new MakeMajority();
         int t = sToInt(br.readLine());
         while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+            int n=sToInt(br.readLine());
+            char a[]=br.readLine().toCharArray();
+           	o.solve(a);
         }
         pw.println(op);
         pw.flush();

@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class RestaurantCustomersCsese {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -23,14 +23,16 @@ public class Vinay {
 
 
 
+    
 
-
-
-
-
-
-    public int solve(){
-        return 0;
+    public int solve(List<int[]>a){
+    	Collections.sort(a, (i, j)->i[0]-j[0]);
+    	int max=0, sum=0;
+    	for(int i=0;i<a.size();i++){
+    		sum+=a.get(i)[1];
+    		max=Math.max(max, sum);
+    	}
+    	return max;
     }
 
     public int run(){
@@ -41,8 +43,14 @@ public class Vinay {
         return 0;
     }
 
+// 3
+// 5 8
+// 2 4
+// 3 9
 
+// 2 4 , 3 9, 5 8
 
+// 
 
 
 
@@ -55,15 +63,19 @@ public class Vinay {
 
 
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
-        int t = sToInt(br.readLine());
-        while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+        RestaurantCustomersCsese o=new RestaurantCustomersCsese();
+        int n = sToInt(br.readLine());
+        List<int[]>a=new ArrayList<>();
+        for(int i=0;i<n;i++){
+        	st=nst(br.readLine());
+        	int x=sToInt(st.nextToken()), y=sToInt(st.nextToken());
+        	a.add(new int[]{x, 1});
+        	a.add(new int[]{y,-1});
         }
+        op.append(o.solve(a)).append("\n");
         pw.println(op);
         pw.flush();
-}
+    }
 
 
 
@@ -134,7 +146,11 @@ public class Vinay {
 
 
 
- //<print2D>
+
+
+
+
+//<print2D>
 
     public static int getNode2D(int row, int col, int n, int m) {
         return (row) * (m) + col;
@@ -244,6 +260,7 @@ public class Vinay {
 
 
     //<BinarySearch>
+
 
     public static int lowerBound(int[] a, int k, int i, int j) {
         int n = a.length;

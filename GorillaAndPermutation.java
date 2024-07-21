@@ -1,10 +1,7 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class GorillaAndPermutation {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-
-    public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
-
 
     public static StringBuilder op=new StringBuilder();
 
@@ -16,101 +13,26 @@ public class Vinay {
     public static int[] dc={0, 0, -1, 1};
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public int solve(){
-        return 0;
-    }
-
-    public int run(){
-        return 0;
-    }
-
-    public int f(){
-        return 0;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
+        GorillaAndPermutation o=new GorillaAndPermutation();
         int t = sToInt(br.readLine());
         while(t-- > 0) {
             st=nst(br.readLine());
-            op.append("hello").append("\n");
+            int x=sToInt(st.nextToken()), y=sToInt(st.nextToken()), z=sToInt(st.nextToken());
+            for(int i=x;i>y;i--){
+            	op.append(i+" ");
+            }
+            for(int i=y;i>=1;i--){
+            	if(i==1){
+            		op.append(i).append("\n");
+            		continue;
+            	}
+            	op.append(i+" ");
+            }
+           
         }
-        pw.println(op);
-        pw.flush();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        System.out.println(op);
+    }
 
 
 
@@ -245,65 +167,6 @@ public class Vinay {
 
     //<BinarySearch>
 
-    public static int lowerBound(int[] a, int k, int i, int j) {
-        int n = a.length;
-        int start = i, end = j;
-        while (start < end) {
-            int mid = start + (end - start) / 2;
-            if (k <= a[mid]) {
-                end = mid;
-            } else start = mid + 1;
-        }
-        return end;
-    }
-
-
-
-    public static int upperBound(int[] a, int k, int i, int j) {
-        int n = a.length;
-        int start = i, end = j;
-        while (start < end) {
-            int mid = start + (end - start) / 2;
-            if (k >= a[mid]) {
-                start = mid + 1;
-            } else end = mid;
-        }
-        return end;
-    }
-
-
-    // <Lower Bound>
-
-
-    public static int lowerBound(int[] a, int k) {
-        int n = a.length;
-        int start = 0, end = n;
-        while (start < end) {
-            int mid = start + (end - start) / 2;
-            if (k <= a[mid]) {
-                end = mid;
-            } else start = mid + 1;
-        }
-        return end;
-    }
-
-    public static int lowerBound(List<Integer>a, int k) {
-        int n = a.size();
-        int start = 0, end = n;
-        while (start < end) {
-            int mid = start + (end - start) / 2;
-            if (k <= a.get(mid)) {
-                end = mid;
-            } else start = mid + 1;
-        }
-        return end;
-    }
-
-
-
-
-
-
     //<UpperBoud>
 
     public static int upperBound(List<Integer>a, int k) {
@@ -311,7 +174,7 @@ public class Vinay {
         int start = 0, end = n;
         while (start < end) {
             int mid = start + (end - start) / 2;
-            if (k >= a.get(mid)) {
+            if (k > a.get(mid)) {
                 start = mid + 1;
             } else end = mid;
         }
@@ -323,7 +186,7 @@ public class Vinay {
         int start = 0, end = n;
         while (start < end) {
             int mid = start + (end - start) / 2;
-            if (k >= a[mid]) {
+            if (k > a[mid]) {
                 start = mid + 1;
             } else end = mid;
         }
@@ -339,33 +202,6 @@ public class Vinay {
         st = nst(br.readLine());
         for (int i = 0; i < n; i++) {
             a[i] = sToInt(st.nextToken());
-        }
-        return a;
-    }
-
-    public static List<Integer> nextIntL(int n)throws IOException {
-        List<Integer>a = new ArrayList<>();
-        st = nst(br.readLine());
-        for (int i = 0; i < n; i++) {
-            a.add(sToInt(st.nextToken()));
-        }
-        return a;
-    }
-
-    public static long[] nextLongA(int n)throws IOException {
-        long a[] = new long[n];
-        st = nst(br.readLine());
-        for (int i = 0; i < n; i++) {
-            a[i] = sToLong(st.nextToken());
-        }
-        return a;
-    }
-
-    public static List<Long> nextLongL(int n)throws IOException {
-        List<Long>a = new ArrayList<>();
-        st = nst(br.readLine());
-        for (int i = 0; i < n; i++) {
-            a.add(sToLong(st.nextToken()));
         }
         return a;
     }

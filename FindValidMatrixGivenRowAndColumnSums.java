@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class FindValidMatrixGivenRowAndColumnSums {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -17,6 +17,25 @@ public class Vinay {
 
 
 
+   	public int[][] restoreMatrix(int[] r, int[] c) {
+        int n=r.length, m=c.length;
+        int a[][]=new int[n][m];
+        int i=0, j=0;
+        while(i<n && j<m){
+        	if(r[i]>=c[j]){
+        		a[i][j]=c[j];
+        		r[i]-=c[j];
+        		c[j]=0;
+        		j++;
+        		continue;
+        	}
+        	a[i][j]=r[i];
+        	c[j]-=r[i];
+        	r[i]=0;
+        	i++;
+        }
+        return a;
+    }
 
 
 
@@ -29,8 +48,38 @@ public class Vinay {
 
 
 
-    public int solve(){
-        return 0;
+    public int[][] restoreMatrix1(int[] r, int[] c) {
+        int n=r.length, m=c.length;
+        int a[][]=new int[n][m];
+        if(m==1){
+        	for(int i=0;i<n;i++){
+        		a[i][0]=r[i];
+        	}
+        	return a;
+        }
+        int i=0, j=0;
+        while(i<n && j<m){
+        	a[i][j]=r[i];
+        	i++;j++;
+        }
+        i=1;j=1;
+        int part=c[0]-a[0][0];
+        while(j<m){
+        	if(i>=n)i=n-1;
+        	a[i][j-1]+=part;
+
+        	a[i][j]-=part;
+        	part=c[j]-a[i][j];
+
+        	i++;j++;
+        }
+        // List<int[]>
+        // for(int i=0;i<n;i++){
+        // 	for(int j=0;j<m;j++){
+
+        // 	}
+        // }
+        return a;
     }
 
     public int run(){
@@ -55,11 +104,15 @@ public class Vinay {
 
 
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
+        FindValidMatrixGivenRowAndColumnSums o=new FindValidMatrixGivenRowAndColumnSums();
         int t = sToInt(br.readLine());
         while(t-- > 0) {
             st=nst(br.readLine());
-            op.append("hello").append("\n");
+            int n=sToInt(st.nextToken()), m=sToInt(st.nextToken());
+            int r[]=nextIntA(n);
+            int c[]=nextIntA(m);
+            int ans[][]=o.restoreMatrix(r, c);
+            print2D(ans);
         }
         pw.println(op);
         pw.flush();

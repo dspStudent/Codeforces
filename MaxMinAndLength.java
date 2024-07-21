@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class MaxMinAndLength {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -19,18 +19,28 @@ public class Vinay {
 
 
 
-
-
-
-
-
-
-
-
-
-
-    public int solve(){
-        return 0;
+    public int solve(List<Integer>a){
+        Map<Integer, Integer>map=new HashMap<>();
+        Collections.sort(a);
+        int n=a.size();
+        for(int i=0;i<n;i++){
+            map.put(a.get(i), i);
+        }
+        int count=0;
+        for(int i=0;i<n;i++){
+            for(int j=2;j<=n && j+a.get(i)<=a.get(n-1);j++){
+                int f=a.get(i);
+                if(!map.containsKey(f+j))continue;
+                int dis=map.get(f+j)-i+1;
+                if(dis<j)continue;
+                if(dis==j){
+                    count++;
+                    continue;
+                }
+                count+=npr(dis-2, j-2);
+            }   
+        }
+        return count;
     }
 
     public int run(){
@@ -55,11 +65,12 @@ public class Vinay {
 
 
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
+        MaxMinAndLength o=new MaxMinAndLength();
         int t = sToInt(br.readLine());
         while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+            int n=sToInt(br.readLine());
+            List<Integer>a=nextIntL(n);
+            op.append(o.solve(a)).append("\n");
         }
         pw.println(op);
         pw.flush();
@@ -131,6 +142,21 @@ public class Vinay {
 
 
 
+// <npr>
+    
+    
+    public int npr(int n, int r){
+        int res=1;
+        for(int i=n;i<=r;i--)res*=i;
+        return res;
+    }
+
+
+
+
+
+
+//<npr/>
 
 
 

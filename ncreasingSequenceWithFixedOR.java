@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class ncreasingSequenceWithFixedOR {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -29,8 +29,32 @@ public class Vinay {
 
 
 
-    public int solve(){
-        return 0;
+    public void solve(long n){
+    	TreeSet<Integer>set=new TreeSet<>();
+    	long bit=n;
+    	for(int i=1;i<=64;i++){
+    		long x=bit>>(i-1);
+    		if((x&1L)==1L)set.add(i);
+    	}
+    	ArrayList<Long>an=new ArrayList<>();
+    	// op.append(set).append("\n");
+    	an.add(bit);
+    	for(int i:set){
+    		long mask=~(1L<<(i-1));
+    		long ans=bit & mask;
+
+    		if(ans==0)continue;
+    		an.add(ans);
+    	}
+    	Collections.reverse(an);
+    	op.append(an.size()).append("\n");
+    	an.forEach(i->op.append(i+" "));
+    	op.append("\n");
+
+    	// for(int i=1;i<an.size();i++){
+    	// 	System.out.println(an.get(i)|an.get(i-1));
+    	// }
+    	// System.out.println();
     }
 
     public int run(){
@@ -55,11 +79,12 @@ public class Vinay {
 
 
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
+        ncreasingSequenceWithFixedOR o=new ncreasingSequenceWithFixedOR();
         int t = sToInt(br.readLine());
         while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+            long n=sToLong(br.readLine());
+            o.solve(n);
+            // op.append("hello").append("\n");
         }
         pw.println(op);
         pw.flush();

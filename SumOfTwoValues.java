@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class SumOfTwoValues {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -27,10 +27,27 @@ public class Vinay {
 
 
 
+    
 
-
-    public int solve(){
-        return 0;
+    public void solve(List<int[]>a, int sum){
+    	int n=a.size();
+    	Collections.sort(a, (i, j)->i[0]-j[0]);
+    	int start=0, end=n-1;
+    	while(start<end){
+    		int x=a.get(start)[0], y=a.get(end)[0];
+    		if(x+y==sum){
+    			op.append(a.get(start)[1]+" "+a.get(end)[1]).append("\n");
+    			return;
+    		}
+    		if(x+y>sum){
+    			end--;
+    		}
+    		else{
+    			start++;
+    		}
+    	}
+    	op.append("IMPOSSIBLE").append("\n");
+        return ;
     }
 
     public int run(){
@@ -54,16 +71,22 @@ public class Vinay {
 
 
 
+
+
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
-        int t = sToInt(br.readLine());
-        while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+        SumOfTwoValues o=new SumOfTwoValues();
+        st=nst(br.readLine());
+        int n = sToInt(st.nextToken()), k=sToInt(st.nextToken());
+        List<int[]>a=new ArrayList<>();
+        st=nst(br.readLine());
+        for(int i=1;i<=n;i++){
+        	a.add(new int[]{sToInt(st.nextToken()), i});
         }
+        o.solve(a, k);
+        
         pw.println(op);
         pw.flush();
-}
+    }
 
 
 
@@ -134,7 +157,11 @@ public class Vinay {
 
 
 
- //<print2D>
+
+
+
+
+//<print2D>
 
     public static int getNode2D(int row, int col, int n, int m) {
         return (row) * (m) + col;
@@ -244,6 +271,7 @@ public class Vinay {
 
 
     //<BinarySearch>
+
 
     public static int lowerBound(int[] a, int k, int i, int j) {
         int n = a.length;

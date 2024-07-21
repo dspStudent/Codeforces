@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class MovieFestival {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -27,10 +27,20 @@ public class Vinay {
 
 
 
+    
 
-
-    public int solve(){
-        return 0;
+    public int solve(List<int[]>a){
+    	int n=a.size();
+    	Collections.sort(a, (i, j)->i[1]-j[1]);
+    	// for(int i[]:a)System.out.println(Arrays.toString(i));
+    	int count=0, last=-1;
+    	for(int i=0;i<n;i++){
+    		if(last<=a.get(i)[0]){
+    			count++;
+    			last=a.get(i)[1];
+    		}
+    	}
+        return count;
     }
 
     public int run(){
@@ -54,24 +64,35 @@ public class Vinay {
 
 
 
+
+
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
-        int t = sToInt(br.readLine());
-        while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+        MovieFestival o=new MovieFestival();
+        int n = sToInt(br.readLine());
+        List<int[]>a=new ArrayList<>();
+        for(int i=0;i<n;i++){
+        	a.add(nextIntA(2));
         }
+        op.append(o.solve(a)).append("\n");
         pw.println(op);
         pw.flush();
-}
+    }
 
 
 
 
 
 
+// 3
+// 3 5
+// 4 9
+// 5 8
 
+// 3 5, 4 9, 5 8
+// 1-1  1-1  1-1         
 
+// 3 5 , 5 8, 4 9
+//  
 
 
 
@@ -134,7 +155,9 @@ public class Vinay {
 
 
 
- //<print2D>
+
+
+//<print2D>
 
     public static int getNode2D(int row, int col, int n, int m) {
         return (row) * (m) + col;
@@ -244,6 +267,7 @@ public class Vinay {
 
 
     //<BinarySearch>
+
 
     public static int lowerBound(int[] a, int k, int i, int j) {
         int n = a.length;

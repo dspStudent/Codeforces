@@ -13,7 +13,6 @@ public class ChessAndQueen {
 		for (int i = 0; i < 8; i++) {
 			if (c[row][i] == 'q')return false;
 			if (c[i][col] == 'q')return false;
-			// if(c[(row+i)%8][(col+i)%8]=='q')return false;
 		}
 
 

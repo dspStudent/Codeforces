@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class SplitTheMultiset {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -29,8 +29,11 @@ public class Vinay {
 
 
 
-    public int solve(){
-        return 0;
+    public int solve(int a, int b){
+        // System.out.println(Math.floor(a/b));
+        // if(a==1)return 0;
+        // if(b>=a)return 1;
+        return (int)(Math.ceil(((double)a-1.0)/((double)b-1.0)));
     }
 
     public int run(){
@@ -42,9 +45,23 @@ public class Vinay {
     }
 
 
+    // 5 2
+    //  {5}
 
+    //  {2,3}
+    //  {1 , 1, 3}
+    //  {1, 1, 1, 2}
+    //  {1, 1, 1, 1, 1}
 
+    // 16 4
+    // {16}
 
+    // 6 3
+    // {6}
+
+    // {3, 3}
+    // {1, 1, 1, 3}
+    // {1, 1, 1, 1, 1, 1}
 
 
 
@@ -55,11 +72,12 @@ public class Vinay {
 
 
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
+        SplitTheMultiset o=new SplitTheMultiset();
         int t = sToInt(br.readLine());
         while(t-- > 0) {
             st=nst(br.readLine());
-            op.append("hello").append("\n");
+            int n=sToInt(st.nextToken()), m=sToInt(st.nextToken());
+            op.append(o.solve(n, m)).append("\n");
         }
         pw.println(op);
         pw.flush();

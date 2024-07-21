@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Vinay {
+public class NonDivisorArrayCodeCheffCon2Div4 {
     public static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
     public static PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
@@ -29,7 +29,8 @@ public class Vinay {
 
 
 
-    public int solve(){
+    public int solve(int n){
+
         return 0;
     }
 
@@ -42,6 +43,21 @@ public class Vinay {
     }
 
 
+    // 4
+    // 3 2 2 4
+    // 1 2 3 4
+
+    // 5 3
+    // 1 2 2 3 3
+
+    // 10
+    // 1 2 2 3 3 4 4 5 5 5
+    // 1 2 3 4 5 6 7 8 9 10
+
+    // 10
+    // 1 1 1 2 1 2 1 2 3 2
+    // 1 2 2 3 2 3 2 4 4 3
+    // 1 2 3 4 5 6 7 8 9 10
 
 
 
@@ -55,11 +71,11 @@ public class Vinay {
 
 
     public static void main(String[] args) throws IOException{ 
-        Vinay o=new Vinay();
+        NonDivisorArrayCodeCheffCon2Div4 o=new NonDivisorArrayCodeCheffCon2Div4();
         int t = sToInt(br.readLine());
         while(t-- > 0) {
-            st=nst(br.readLine());
-            op.append("hello").append("\n");
+            int n=sToInt(br.readLine());
+            op.append(o.solve(n)).append("\n");
         }
         pw.println(op);
         pw.flush();
