@@ -1,0 +1,213 @@
+        import java.io.*;
+import java.util.*;
+public class LargeArraySegments {
+
+	static long lb(long pref[], long start, long end, long k, long rm){
+		while(start< end){
+			long mid=start+(end-start)/2;
+			long ith=mid%pref.length;
+			long value=(mid/pref.length)*pref[pref.length-1] + (pref[(int)ith]);
+			if(k > (value -rm)){
+				start=mid+1;
+			}else{
+				end=mid;
+			}
+		}
+		return start;
+	}
+	static long getPref(long []pref, int n, int i){
+		if(n==0)return 0;
+		if(i==0)return pref[n-1];
+
+		return pref[n-1]-pref[i-1];
+	}
+
+    public static void main(String[] args) throws Exception {
+        LargeArraySegments o=new LargeArraySegments();
+        FastScanner sc = new FastScanner();
+
+        int t = sc.nextInt();
+        while (t-- > 0) {
+
+            int n = sc.nextInt();
+            int k=sc.nextInt();
+            long m=1L*n*k;
+            long x=sc.nextLong();
+            int a[]=new int[n];
+            long pref[]=new long[n];
+
+            for(int i=0;i<n;i++){
+            	a[i]=sc.nextInt();
+            	if(i==0)pref[i]=a[0];
+            	else{
+            		pref[i]=a[i]+pref[i-1];
+            	}
+            }
+
+            if(pref[n-1] * k < x){
+            	println(0);
+            	continue;
+            }
+
+            // println(Arrays.toString(pref));
+
+            long count=0;
+            long sum=0;
+
+           	for(int i=0;i<n;i++){
+           		long index=lb(pref, 0L, m, x, sum);
+           		// if(index!=m)
+           		count+=(m-index + n-1)/n;
+           		// println(i+" "+index+" "+count);
+
+           		sum+=a[i];
+           	}
+
+           	println(count);
+
+            
+        }
+        flush();
+    }
+
+   // -------- FAST INPUT --------
+    static class FastScanner {
+        private final byte[] buffer = new byte[1 << 16];
+        private int ptr = 0, len = 0;
+        private final InputStream in = System.in;
+
+        private int readByte() throws IOException {
+            if (ptr >= len) {
+                len = in.read(buffer);
+                ptr = 0;
+                if (len <= 0) return -1;
+            }
+            return buffer[ptr++];
+        }
+
+        byte[] nextBytes() throws IOException {
+            int c;
+            do {
+                c = readByte();
+            } while (c <= ' ');
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            while (c > ' ') {
+                out.write(c);
+                c = readByte();
+            }
+            return out.toByteArray();
+        }
+
+        String next() throws IOException {
+            byte[] b = nextBytes();
+            return new String(b);   // ASCII input assumed (CP standard)
+        }
+
+        byte[] nextLineBytes() throws IOException {
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            int c;
+
+            // consume any previous newline
+            while (true) {
+                c = readByte();
+                if (c == -1 || c != '\n') break;
+            }
+
+            while (c != -1 && c != '\n') {
+                out.write(c);
+                c = readByte();
+            }
+
+            return out.toByteArray();
+        }
+
+        String nextLine() throws IOException {
+            byte[] b = nextLineBytes();
+            return new String(b);
+        }
+
+
+        int nextInt() throws IOException {
+            int c, sign = 1, val = 0;
+            do {
+                c = readByte();
+            } while (c <= ' ');
+
+            if (c == '-') {
+                sign = -1;
+                c = readByte();
+            }
+
+            while (c > ' ') {
+                val = val * 10 + (c - '0');
+                c = readByte();
+            }
+            return val * sign;
+        }
+
+        long nextLong() throws IOException {
+            int c, sign = 1;
+            long val = 0;
+            do {
+                c = readByte();
+            } while (c <= ' ');
+
+            if (c == '-') {
+                sign = -1;
+                c = readByte();
+            }
+
+            while (c > ' ') {
+                val = val * 10 + (c - '0');
+                c = readByte();
+            }
+            return val * sign;
+        }
+    }
+
+    // -------- FAST OUTPUT --------
+    static final StringBuilder sb = new StringBuilder();
+    static final BufferedOutputStream out = new BufferedOutputStream(System.out);
+
+    static void print(int x) {
+        sb.append(x);
+    }
+
+    static void println(int x) {
+        sb.append(x).append('\n');
+    }
+
+    static void print(long x) {
+        sb.append(x);
+    }
+
+    static void println(long x) {
+        sb.append(x).append('\n');
+    }
+
+    static void print(double x) {
+        sb.append(x);
+    }
+
+    static void println(double x) {
+        sb.append(x).append('\n');
+    }
+
+    static void print(String s) {
+        sb.append(s);
+    }
+
+    static void println(String s) {
+        sb.append(s).append('\n');
+    }
+
+    static void flush() throws IOException {
+        out.write(sb.toString().getBytes());
+        out.flush();
+        sb.setLength(0);
+    }
+
+    // -------- USAGE --------
+
+}
